@@ -1,30 +1,31 @@
-const crypto = require("crypto");
-const moment = require("moment-timezone");
+/* eslint-disable no-unused-expressions */
+const crypto = require('crypto');
+const moment = require('moment-timezone');
 
 module.exports = (sequelize, DataTypes) => {
   const RefreshToken = sequelize.define(
-    "RefreshToken",
+    'RefreshToken',
     {
       token: DataTypes.STRING,
       user_id: DataTypes.BIGINT,
       user_mobile: DataTypes.BIGINT,
-      expires: DataTypes.DATE
+      expires: DataTypes.DATE,
     },
-    { tableName: "refresh_tokens" }
+    { tableName: 'refresh_tokens' }
   );
 
   (RefreshToken.generate = user => {
     const user_id = user.id;
     const user_mobile = user.mobile;
-    const token = `${user_id}.${crypto.randomBytes(40).toString("hex")}`;
+    const token = `${user_id}.${crypto.randomBytes(40).toString('hex')}`;
     const expires = moment()
-      .add(30, "days")
+      .add(30, 'days')
       .toDate();
     const tokenObject = new RefreshToken({
       token,
       user_id,
       user_mobile,
-      expires
+      expires,
     });
     tokenObject.save();
     return tokenObject;
@@ -36,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       // console.log('refreshToken', refreshToken);
       const tokenObject = refreshToken;
       if (!refreshToken) {
-        console.log("err", { where: options });
+        console.log('err', { where: options });
       } else {
         refreshToken.destroy();
       }

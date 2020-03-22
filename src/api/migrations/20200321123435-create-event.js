@@ -1,72 +1,69 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("events", {
+  up: (queryInterface, Sequelize) =>
+    queryInterface.createTable('events', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING(30)
+        type: Sequelize.STRING(30),
       },
       date: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       venue: {
         allowNull: false,
-        type: Sequelize.STRING(60)
+        type: Sequelize.STRING(60),
       },
       category: {
         allowNull: false,
-        type: Sequelize.STRING(60)
+        type: Sequelize.STRING(60),
       },
       website_link: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       no_of_exhibitors: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       exhibitors_list: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       book_tickets_link: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       image_link: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       start_time: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
       },
       end_time: {
-        type: Sequelize.TIME
+        type: Sequelize.TIME,
       },
       featured: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
       },
       check_in_link: {
-        type: Sequelize.STRING(2048)
+        type: Sequelize.STRING(2048),
       },
       email_id: {
-        type: Sequelize.STRING(60)
+        type: Sequelize.STRING(60),
       },
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updated_at: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
-  },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("events");
-  }
+        type: Sequelize.DATE,
+      },
+    }),
+  down: queryInterface => queryInterface.dropTable('events'),
 };
