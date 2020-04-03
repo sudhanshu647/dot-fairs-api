@@ -2,20 +2,12 @@ const express = require('express');
 const validate = require('express-validation');
 const controller = require('../../controllers/user.controller');
 const { authorize } = require('../../middlewares/auth');
+const { updateUserDetails } = require('../../validations/user.validation.js');
 
 const router = express.Router();
-/**
- * Load address id when API route parameter is hit
- */
-// router.param('id', controller.load);
-
-/**
- * Load user when API with userId route parameter is hit
- */
 
 router
   .route('/')
-
   /**
    * @api {get} /user   Get User information
    * @apiDescription Get logged in User information
@@ -34,6 +26,12 @@ router
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
-  .get(authorize(), controller.loggedIn);
+  .get(authorize(), controller.loggedIn)
+
+  .put(
+    authorize(),
+    validate(updateUserDetails),
+    controller.updateProfileDetails
+  );
 
 module.exports = router;

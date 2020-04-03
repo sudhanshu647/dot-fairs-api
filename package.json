@@ -8,7 +8,7 @@
   "license": "MIT",
   "apidoc": {
     "title": "DOT-FAIR API",
-    "url": "https://dot-fair-api.herokuapp.com/v1"
+    "url": "https://dot-fairs-api.herokuapp.com/v1"
   },
   "engines": {
     "node": ">=8",
@@ -42,6 +42,7 @@
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "cross-env": "^7.0.2",
+    "docs": "^0.3.2-canary.0",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
     "express-validation": "^2.0.0",

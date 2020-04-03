@@ -20,9 +20,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       name: {
         type: DataTypes.STRING(50),
+        trim: true,
       },
       mobile: {
         type: DataTypes.BIGINT,
+        trim: true,
         allowNull: false,
         unique: true,
         validate: {
@@ -32,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING(60),
+        trim: true,
         unique: true,
         validate: {
           isEmail: true,
@@ -39,9 +42,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       profile_img_link: {
         type: DataTypes.STRING(2048),
+        trim: true,
       },
       gender: {
         type: DataTypes.STRING(10),
+        trim: true,
       },
       date_of_birth: {
         type: DataTypes.DATEONLY,
@@ -61,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(200),
       },
       otp: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER(6),
       },
       otp_expires_at: {
         type: DataTypes.DATE,
@@ -71,6 +76,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       profile_name: {
         type: DataTypes.STRING(30),
+        trim: true,
       },
       created_at: {
         allowNull: false,
@@ -79,6 +85,22 @@ module.exports = (sequelize, DataTypes) => {
       updated_at: {
         allowNull: false,
         type: DataTypes.DATE,
+      },
+      address: {
+        type: DataTypes.STRING(100),
+        trim: true,
+      },
+      company: {
+        type: DataTypes.STRING(30),
+        trim: true,
+      },
+      designation: {
+        type: DataTypes.STRING(30),
+        trim: true,
+      },
+      about: {
+        type: DataTypes.STRING(2048),
+        trim: true,
       },
     },
     { tableName: 'users' }
@@ -185,6 +207,9 @@ module.exports = (sequelize, DataTypes) => {
     });
 
   User.beforeCreate(user => {
+    User.created_at = moment().format('YYYY-MM-DD HH:mm');
+    User.updated_at = moment().format('YYYY-MM-DD HH:mm');
+
     // pass=req.body.password;
     if (user.password) {
       user.password = bcrypt.hashSync(

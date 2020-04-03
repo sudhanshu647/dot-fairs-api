@@ -55,6 +55,22 @@ module.exports = {
       profile_name: {
         type: Sequelize.STRING(30),
       },
+      address: {
+        type: Sequelize.STRING(100),
+        trim: true,
+      },
+      company: {
+        type: Sequelize.STRING(30),
+        trim: true,
+      },
+      designation: {
+        type: Sequelize.STRING(30),
+        trim: true,
+      },
+      about: {
+        type: Sequelize.STRING(2048),
+        trim: true,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,
