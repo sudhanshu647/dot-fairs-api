@@ -23,7 +23,7 @@ router
    * @apiParam  {String{10}}             mobile    User's mobile number is required to genrate an OTP
    *
    * @apiSuccess (Created 201) {user}    mobile              user mobile
-   * @apiSuccess (Created 201) {user}    OTP                 user recive an otp
+   * @apiSuccess (Created 201) {user}    otp                 user receives an otp on his mobile number
    * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
    *
    */
@@ -42,15 +42,13 @@ router
    * @apiGroup Auth
    * @apiPermission public
    *
-   * @apiParam  {mobile{10}}         mobile      user registerd mobile number
-   * @apiParam  {otp{4}}             otp         user valid OTP
+   * @apiParam  {String}        mobile      user registerd mobile number
+   * @apiParam  {Numjber}       otp         user valid OTP
    *
    * @apiSuccess  {String}  token.tokenType     Access Token's type
    * @apiSuccess  {String}  token.accessToken   Authorization Token
-   * @apiSuccess  {String}  token.refreshToken  Token to get a new accessToken
-   *                                                   after expiration time
-   * @apiSuccess  {Number}  token.expiresIn     Access Token's expiration time
-   *                                                   in miliseconds
+   * @apiSuccess  {String}  token.refreshToken  Token to get a new accessToken after expiration time
+   * @apiSuccess  {Number}  token.expiresIn     Access Token's expiration time in miliseconds
    *
    * @apiSuccess  {String}  user.id             User's id
    * @apiSuccess  {String}  user.name           User's name
@@ -72,7 +70,7 @@ router
    * @apiPermission public
    *
    * @apiParam  {String}  mobile         User's mobile
-   * @apiParam  {String}  refreshToken  Refresh token aquired when user logged in
+   * @apiParam  {String}  refresh_token  Refresh token aquired when user logged in
    *
    * @apiSuccess {String}  tokenType     Access Token's type
    * @apiSuccess {String}  accessToken   Authorization Token

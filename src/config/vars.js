@@ -13,12 +13,17 @@ module.exports = {
   jwtSecret: process.env.JWT_SECRET,
   jwtExpirationInterval: process.env.JWT_EXPIRATION_MINUTES,
   apiUrl: process.env.API_URL,
+  s3Bucket: process.env.S3_BUCKET,
+  awsAccessKeyId: process.env.DOT_AWS_ACCESS_KEY_ID,
+  awsSecretAccessKey: process.env.DOT_AWS_SECRET_ACCESS_KEY,
+  awsRegion: process.env.DOT_AWS_REGION,
   mysqlConfig: {
     dBUserName: process.env.MYSQL_DB_USERNAME,
     dbPassword: process.env.MYSQL_DB_PASSWORD,
     dbName: process.env.MYSQL_DB_NAME,
     dbHost: process.env.MYSQL_DB_HOST,
   },
+
   // mongo: {
   //   uri: process.env.NODE_ENV === 'test'
   //     ? process.env.MONGO_URI_TESTS

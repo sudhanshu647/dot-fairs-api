@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const httpStatus = require('http-status');
 const { omit } = require('lodash');
 const axios = require('axios');

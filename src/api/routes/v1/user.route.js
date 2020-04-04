@@ -9,10 +9,10 @@ const router = express.Router();
 router
   .route('/')
   /**
-   * @api {get} /user   Get User information
-   * @apiDescription Get logged in User information
+   * @api {get} /user   Get User Profile Details
+   * @apiDescription Get User Profile Details
    * @apiVersion 1.0.0
-   * @apiName User_information
+   * @apiName Get User Profile Details
    * @apiGroup User
    *
    * @apiHeader {String} Authorization   User's access token
@@ -29,7 +29,7 @@ router
   .get(authorize(), controller.loggedIn)
 
   /**
-   * @api {get} /user   update User information
+   * @api {put} /user   update User information
    * @apiDescription update user profile details
    * @apiVersion 1.0.0
    * @apiName update user details
@@ -52,4 +52,22 @@ router
     controller.updateProfileDetails
   );
 
+router
+  .route('/upload-profile-img')
+  /**
+   * @api {post} /user/upload-profile-img   upoad user profile image
+   * @apiDescription upload user image
+   * @apiVersion 1.0.0
+   * @apiName upload user profile image
+   * @apiGroup User
+   *
+   * @apiHeader {String} Authorization   User's access token
+   *
+   * @apiParam   {Image}    image       User profile image
+   *
+   * @apiSuccess {String}   image_url   user profle image access url
+   *
+   * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
+   */
+  .post(authorize(), controller.userImgUpload);
 module.exports = router;
