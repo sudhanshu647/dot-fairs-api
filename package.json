@@ -7,7 +7,7 @@
   "private": false,
   "license": "MIT",
   "apidoc": {
-    "title": "DOT-FAIR API",
+    "title": "DOT FAIRS API",
     "url": "https://dot-fairs-api.herokuapp.com/v1"
   },
   "engines": {
@@ -19,8 +19,8 @@
     "prestart": "npm docs && npx sequelize-cli db:migrate",
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./src/ --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lint:fix": "eslint . --fix",
     "validate": "npm lint && npm test",
     "postpublish": "git push --tags",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "sudhanshusharma647@gmail.com"
+    "url": "https://github.com/sudhanshu647/dot-fairs-api"
   },
   "dependencies": {
     "@hapi/joi": "^15.1.1",
