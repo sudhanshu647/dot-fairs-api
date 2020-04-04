@@ -1,7 +1,7 @@
 {
   "name": "dot-fairs-api",
   "version": "1.0.0",
-  "description": "RESTful APIs for dot-fairs",
+  "description": "REST full APIs for dot-fairs",
   "author": "Sudhanshu Sharma <sudhanshusharma647@gmail.com>",
   "main": "src/index.js",
   "private": false,
@@ -12,17 +12,18 @@
   },
   "engines": {
     "node": ">=8",
-    "npm": "*"
+    "yarn": "*"
   },
   "scripts": {
-    "precommit": "npm lint",
-    "prestart": "npm docs && npx sequelize-cli db:migrate",
+    "precommit": "yarn lint",
+    "prestart": "yarn docs && npx sequelize-cli db:migrate",
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
     "lint": "eslint ./src/ --ignore-path .gitignore --ignore-pattern internals/scripts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint:fix": "eslint . --fix",
-    "validate": "npm lint && npm test",
+    "lint:watch": "yarn lint --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "validate": "yarn lint && yarn test",
     "postpublish": "git push --tags",
     "deploy": "sh ./deploy.sh",
     "docs": "apidoc -i src -o docs"

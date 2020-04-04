@@ -76,7 +76,7 @@ router
    *
    * @apiSuccess {String}  tokenType     Access Token's type
    * @apiSuccess {String}  accessToken   Authorization Token
-   * @apiSuccess {String}  refreshToken  Token to get a new accessToken after expiration time
+   * @apiSuccess {String}  refresh_token  Token to get a new accessToken after expiration time
    * @apiSuccess {Number}  expiresIn     Access Token's expiration time in miliseconds
    *
    * @apiError (Bad Request 400)  ValidationError  Some parameters may contain invalid values
