@@ -12,7 +12,7 @@ const {
   s3Bucket,
 } = require('../../config/vars');
 
-const { User } = db;
+const { User, BookmarkedFairs } = db;
 
 aws.config.update({
   secretAccessKey: awsSecretAccessKey,
@@ -45,7 +45,7 @@ exports.loggedIn = async (req, res, next) => {
       ],
       where: { id: req.user.id },
     })
-      .then(user => res.json({ user }))
+      .then(user => res.json({ success: true, data: { user } }))
       .catch(e => next(e));
   } catch (error) {
     next(error);
@@ -93,7 +93,9 @@ exports.updateProfileDetails = async (req, res, next) => {
       },
       { where: { id: req.user.id } }
     )
-      .then(res.json({ message: 'update successfully' }))
+      .then(
+        res.json({ success: true, data: { message: 'update successfully' } })
+      )
       .catch(e => next(e));
   } catch (error) {
     next(error);

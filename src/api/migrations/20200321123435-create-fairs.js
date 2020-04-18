@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('events', {
+    queryInterface.createTable('fairs', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,11 +9,11 @@ module.exports = {
       },
       name: {
         allowNull: false,
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(60),
       },
       date: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
       },
       venue: {
         allowNull: false,
@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       no_of_exhibitors: {
-        type: Sequelize.STRING,
+        type: Sequelize.TINYINT,
       },
       exhibitors_list: {
         type: Sequelize.STRING,
@@ -65,5 +65,5 @@ module.exports = {
         type: Sequelize.DATE,
       },
     }),
-  down: queryInterface => queryInterface.dropTable('events'),
+  down: queryInterface => queryInterface.dropTable('fairs'),
 };
