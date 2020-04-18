@@ -77,21 +77,4 @@ router
    */
   .post(authorize(), controller.bookmarkFair);
 
-/**
- * @api {post} /user/upload-profile-img   upoad user profile image
- * @apiDescription upload user image
- * @apiVersion 1.0.0
- * @apiName upload user profile image
- * @apiGroup User
- *
- * @apiHeader {String} Authorization   User's access token
- *
- * @apiParam   {Image}    image       User profile image
- *
- * @apiSuccess {String}   image_url   user profle image access url
- *
- * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
- */
-// .get(authorize(), controller.fairDetails)
-
 module.exports = router;
