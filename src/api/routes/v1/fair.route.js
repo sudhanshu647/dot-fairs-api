@@ -28,7 +28,7 @@ router
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
-  .get(authorize(), controller.fairsList);
+  .get(controller.fairsList);
 
 router
   .route('/:fair_id')
@@ -57,7 +57,7 @@ router
    *
    * @apiError (Unauthorized 401)  Unauthorized  Only authenticated Users can access the data
    */
-  .get(authorize(), controller.fairDetails);
+  .get(controller.fairDetails);
 
 router
   .route('/bookmark/:fair_id')
