@@ -12,7 +12,7 @@ const {
   s3Bucket,
 } = require('../../config/vars');
 
-const { User, BookmarkedFairs } = db;
+const { User, BookmarkedFairs, Fairs } = db;
 
 aws.config.update({
   secretAccessKey: awsSecretAccessKey,
@@ -142,25 +142,24 @@ exports.userImgUpload = async (req, res, next) => {
   }
 };
 
-// exports.fairsList = async (req, res, next) => {
-//   try {
-//     Fairs.findAll({
-//       attributes: [
-//         'id',
-//         'name',
-//         'venue',
-//         'date',
-//         'start_time',
-//         'end_time',
-//         'category',
-//         'image_link',
-//         'book_tickets_link',
-//       ],
-//       where: whereStatement,
-//     })
-//       .then(fairs => res.json({ success: true, data: { fairs } }))
-//       .catch(e => next(e));
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+exports.fairsList = async (req, res, next) => {
+  try {
+    Fairs.findAll({
+      attributes: [
+        'id',
+        'name',
+        'venue',
+        'date',
+        'start_time',
+        'end_time',
+        'category',
+        'image_link',
+        'book_tickets_link',
+      ],
+    })
+      .then(fairs => res.json({ success: true, data: { fairs } }))
+      .catch(e => next(e));
+  } catch (error) {
+    next(error);
+  }
+};
