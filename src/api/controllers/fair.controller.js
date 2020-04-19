@@ -72,12 +72,35 @@ exports.fairDetails = async (req, res, next) => {
 // book mark a fair
 exports.bookmarkFair = async (req, res, next) => {
   try {
-    BookmarkedFairs.create({
-      fair_id: req.params.fair_id,
-      user_id: req.user.id,
-    }).then(bookmarkFair =>
-      res.json({ success: true, data: { bookmarkFair } })
-    );
+    const { type } = req.body;
+    if (type === 'bookmark') {
+      const BookmarkedFairsObj = BookmarkedFairs.findOne({
+        where: {
+          fair_id: req.params.fair_id,
+          user_id: req.user.id,
+        },
+      });
+      if (BookmarkedFairsObj == null) {
+        BookmarkedFairs.create({
+          fair_id: req.params.fair_id,
+          user_id: req.user.id,
+        })
+          .then(res.json({ success: true, data: { message: 'bookmarked' } }))
+          .catch(e => next(e));
+      } else {
+        throw new APIError({
+          message: 'This fair already Bookmarked',
+          status: httpStatus.CONFLICT,
+        });
+      }
+    } else if (type === 'unbookmark') {
+      BookmarkedFairs.destroy({
+        where: {
+          fair_id: req.params.fair_id,
+          user_id: req.user.id,
+        },
+      }).then(res.json({ success: true, data: { message: 'unbookmarked' } }));
+    }
   } catch (error) {
     next(error);
   }
